@@ -67,7 +67,7 @@ def send_mail(subject, message, from_email, recipients):
     if 'test' not in sys.argv and 'mailer' in settings.INSTALLED_APPS:
         try:
             from mailer import send_mail
-            return send_mail(subject, message, from_email, recipients)
+            return send_mail(subject, message, from_email, recipients, html_message=message)
         except ImportError:
             pass
     return django_send_mail(subject, message, from_email, recipients)

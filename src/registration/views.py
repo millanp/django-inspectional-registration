@@ -14,7 +14,7 @@ from django.utils.text import ugettext_lazy as _
 
 from registration.backends import get_backend
 from registration.models import RegistrationProfile
-
+from registration.forms import RegistrationForm
 
 class RegistrationCompleteView(TemplateView):
     """A simple template view for registration complete"""
@@ -128,7 +128,7 @@ class RegistrationView(FormMixin, TemplateResponseMixin, ProcessFormView):
         Register the user with passed ``username`` and ``email1``
     """
     template_name = r'registration/registration_form.html'
-
+    custom_form_class = RegistrationForm
     def __init__(self, *args, **kwargs):
         self.backend = get_backend()
         super(RegistrationView, self).__init__(*args, **kwargs)
@@ -143,7 +143,7 @@ class RegistrationView(FormMixin, TemplateResponseMixin, ProcessFormView):
 
     def get_form_class(self):
         """get registration form class via backend"""
-        return self.backend.get_registration_form_class()
+        return self.custom_form_class
 
     def get_supplement_form_class(self):
         """get registration supplement form class via backend"""

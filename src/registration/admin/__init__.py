@@ -181,6 +181,7 @@ class RegistrationAdmin(admin.ModelAdmin):
     """
     def get_user_email(self, obj):
         return obj.user.email
+    get_user_email.short_description = "Email"
     list_display = ('user', 'get_user_email', 'get_status_display',
                     'activation_key_expired', 'display_supplement_summary')
     raw_id_fields = ['user']

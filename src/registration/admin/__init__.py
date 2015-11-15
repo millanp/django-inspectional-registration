@@ -262,6 +262,7 @@ class RegistrationAdmin(admin.ModelAdmin):
         """Reject the selected users, if they are not already accepted"""
         for profile in queryset:
             self.backend.reject(profile, request=request)
+        queryset.delete()
     reject_users.short_description = _(
         "Reject registrations of selected users"
     )

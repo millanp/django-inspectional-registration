@@ -183,11 +183,12 @@ class RegistrationAdmin(admin.ModelAdmin):
         return obj.user.email
     get_user_email.short_description = "Email"
     list_display = ('user', 'get_user_email', 'get_status_display',
-                    'activation_key_expired', 'display_supplement_summary')
+                    )
+    
     raw_id_fields = ['user']
     search_fields = ('user__username', 'user__first_name', 'user__last_name')
     list_filter = ('_status', )
-
+    ordering = ['status']
     form = RegistrationAdminForm
     backend = get_backend()
 

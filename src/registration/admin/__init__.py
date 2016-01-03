@@ -188,7 +188,7 @@ class RegistrationAdmin(admin.ModelAdmin):
     raw_id_fields = ['user']
     search_fields = ('user__username', 'user__first_name', 'user__last_name')
     list_filter = ('_status', )
-    ordering = ['status']
+    ordering = ['_status']
     form = RegistrationAdminForm
     backend = get_backend()
 

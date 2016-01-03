@@ -357,7 +357,7 @@ class RegistrationProfile(models.Model):
 
     """
     STATUS_LIST = (
-        ('untreated', _('Awaiting admin approval')),
+        ('untreated', _('Approval needed')),
         ('accepted', _('Waiting for user confirmation')),
         ('rejected', _('Rejected')),
     )
